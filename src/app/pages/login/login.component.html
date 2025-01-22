@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="images">
+    <div class="img image-2"></div>
+    <div class="img image-1"></div>
+  </div>
+
+  <ion-grid class="content form-group">
+    <ion-row class="input-row title">
+      <h1>Bem Vindo ao Dashboard Macchines</h1>
+    </ion-row>
+    <ion-row class='input-row'>
+      <div class="error-message" *ngIf="hasError">
+        <ion-icon name="warning" size="md"></ion-icon>
+        <ion-label color="light">{{ errorMessage }}</ion-label>
+      </div>
+    </ion-row>
+    <ion-row class='input-row'>
+      <ion-input [(ngModel)]="loginData.username" type="email" placeholder="Usuário" [disabled]="isLoading"
+        (keyup.enter)="login()">
+        <ion-icon name="person"></ion-icon>
+      </ion-input>
+    </ion-row>
+    <ion-row class='input-row'>
+      <ion-input [(ngModel)]="loginData.password" type="password" placeholder="Senha" [disabled]="isLoading"
+        (keyup.enter)="login()">
+        <ion-icon name="lock-closed"></ion-icon>
+      </ion-input>
+    </ion-row>
+    <ion-row class='input-row'>
+      <ion-button *ngIf="isLoading" expand="block">
+        <ion-spinner style="color: white;" name="crescent"></ion-spinner>
+      </ion-button>
+      <ion-button (click)='login()' expand="block" *ngIf="!isLoading">Entrar no Sistema</ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
