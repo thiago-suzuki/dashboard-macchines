@@ -21,7 +21,7 @@ export class AuthService {
         }
     
         return user;
-      }
+    }
     
 
     async login(dataUserAuthentication: any) {
@@ -38,6 +38,10 @@ export class AuthService {
 
     async saveUser(user: any) {
         localStorage.setItem('user', JSON.stringify(user));
+    }
+
+    logOut() {
+        localStorage.removeItem('user');
     }
 }
 

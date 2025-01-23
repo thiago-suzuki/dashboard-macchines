@@ -1,0 +1,85 @@
+<ion-header id="main">
+  <ion-toolbar>
+    <ion-icon class="arrow-icon" slot="start" name="arrow-back-outline" (click)="backButton()"></ion-icon>
+    <div>
+      <div class="titles">
+        <ion-label>Visualizando</ion-label><br>
+        <ion-text>{{ create ?  'Adicionar Nova Máquina' : 'Detalhes da Máquina' }}</ion-text>
+      </div>
+    </div>
+
+    <ion-icon style="color: green; cursor: pointer;" slot="end" name="checkmark-circle-outline" (click)="submit()"></ion-icon>
+    <ion-icon style="color: red; cursor: pointer;" slot="end" name="trash-outline" (click)="deleteMacchine()"></ion-icon>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-grid *ngIf="!loading">
+    <ion-row>
+      <ion-col size="6" class="padding-right-col" [formGroup]="macchineForm">
+        <ion-label>Nome da Máquina *</ion-label>
+        <ion-input type="text" class="input-style" [ngClass]="{'input-invalid': macchineForm.get('name')?.invalid && macchineForm.get('name')?.touched}" formControlName="name"></ion-input>
+      </ion-col>
+      <ion-col size="6" class="padding-left-col" [formGroup]="macchineForm">
+        <ion-label>Status *</ion-label>
+        <ion-select formControlName="statusId" type="text" class="select-style" [ngClass]="{'input-invalid': macchineForm.get('statusId')?.invalid && macchineForm.get('statusId')?.touched}">
+          <ion-select-option *ngFor="let s of status" [value]="s.id">
+            {{ s.description }}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" class="padding-right-col" [formGroup]="macchineForm">
+        <ion-label>CEP *</ion-label>
+        <ion-input type="text" class="input-style" formControlName="cep" [ngClass]="{'input-invalid': macchineForm.get('cep')?.invalid && macchineForm.get('cep')?.touched}" (keyup.enter)="getAddressData()"></ion-input>
+      </ion-col>
+      <ion-col size="6" class="padding-left-col" [formGroup]="macchineForm">
+        <ion-label>Endereço</ion-label>
+        <ion-input type="text" class="input-style-disabled" formControlName="address"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" class="padding-right-col" [formGroup]="macchineForm">
+        <ion-label>Complemento</ion-label>
+        <ion-input type="text" class="input-style" formControlName="complement"></ion-input>
+      </ion-col>
+      <ion-col size="6" class="padding-left-col" [formGroup]="macchineForm">
+        <ion-label>Bairro</ion-label>
+        <ion-input type="text" class="input-style-disabled" formControlName="neighborhood"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row [ngClass]="{'last-row': !create}">
+      <ion-col size="6" class="padding-right-col" [formGroup]="macchineForm">
+        <ion-label>Cidade</ion-label>
+        <ion-input type="text" class="input-style-disabled" formControlName="city"></ion-input>
+      </ion-col>
+      <ion-col size="6" class="padding-left-col" [formGroup]="macchineForm">
+        <ion-label>Estado</ion-label>
+        <ion-input type="text" class="input-style-disabled" formControlName="state"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!create">
+      <ion-col size="12" class="col-relative" [formGroup]="macchineForm">
+        <ion-label>Log de Eventos</ion-label>
+        <div class="logs">
+          <div class="text-status" *ngFor="let h of history">{{ h }}</div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-padding custom-skeleton" *ngIf="loading">
+    <ion-skeleton-text animated style="width: 100%; height: 57px; padding-bottom: 16px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 100%; height: 57px; padding-bottom: 16px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 100%; height: 57px; padding-bottom: 16px;"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 100%; height: 57px; padding-bottom: 16px;"></ion-skeleton-text>
+  </div>
+</ion-content>

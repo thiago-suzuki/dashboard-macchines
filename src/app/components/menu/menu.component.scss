@@ -1,0 +1,88 @@
+ion-menu {
+
+    &.menu {
+  
+      ion-toolbar {
+        --background: #fff !important;
+        --color: #6b07dd !important;
+  
+        ion-title {
+          font-size: 16px;
+          font-weight: 700;
+          padding: 0 16px;
+  
+        }
+  
+      }
+  
+      ion-content {
+        display: flex;
+        flex-direction: column;
+  
+        .item-menu {
+          display: flex;
+          align-items: center;
+          height: 40px;
+          width: 100%;
+          padding: 8px 16px;
+  
+          ion-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #707070;
+          }
+        }
+  
+        .itens-list {
+          width: 100%;
+  
+          ion-text {
+            font-size: 16px;
+            font-weight: 700;
+            color: #707070;
+          }
+  
+          .item-list {
+            cursor: pointer;
+            height: 40px;
+            background-color: #E3E3E3;
+            padding: 8px 16px 8px 32px;
+            border-bottom: #c9c9c9 solid 1px !important;
+          }
+  
+          // .item-list:first-child {
+          //   border-bottom: #A7A7A7 solid 1px !important;
+          // }
+        }
+  
+      }
+  
+      .menu-logout-footer {
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        height: 60px;
+
+        ion-icon {
+          font-size: 30px;
+          color: #6b07dd;
+          padding-right: 8px;
+        }
+
+        ion-text {
+          font-size: 16px;
+          font-weight: 700;
+          color: #6b07dd;
+        }
+      }
+    }
+}
+
+ion-menu .item-list {
+  pointer-events: auto; /* Garante que o clique seja registrado */
+}
+
+
+ion-menu .menu-logout-footer {
+  pointer-events: auto; /* Garante que o clique seja registrado */
+}

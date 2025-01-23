@@ -1,3 +1,53 @@
-<p>
-  list-macchines works!
-</p>
+<app-menu #menu></app-menu>
+
+<ion-header class="ion-no-border header">
+  <ion-toolbar>
+    <div class="box-header">
+      <ion-icon style="cursor: pointer;" slot="start" size="large" name="menu-outline" (click)="openMenu()" ></ion-icon>
+      <div>
+        <ion-text>Visão Geral</ion-text>
+        <ion-text>Máquinas</ion-text>
+      </div>
+    </div>
+  </ion-toolbar>
+  <div class="content">
+    <div class="terminal">
+      <ion-text>Status</ion-text>
+        <div class="terminal-select">
+          <ion-select [(ngModel)]="statusId" (ionChange)="onSelectStatus()">
+            <ion-select-option *ngFor="let status of status" [value]="status.id">
+              {{ status.description}}
+            </ion-select-option>
+          </ion-select>
+        </div>
+    </div>
+    <br>
+    <div class="buttons-not-to-edit">
+      <ion-button mode="ios" class="add-trucks" (click)="addNewMacchine()">
+        <ion-text><i class="fa fa-plus"></i>&ensp;Cadastrar Nova Máquina</ion-text>
+      </ion-button>
+    </div> 
+  </div>
+</ion-header>
+
+<br>
+<br>
+
+<ion-content *ngIf="!loading">
+  <div class="card-truck" *ngFor="let m of macchines;" (click)="goToDetialsMacchine(m)">
+    <div class="border-card"></div>
+    <div class="detail">
+      <div>
+        <ion-text>{{ m.name }}</ion-text>
+        <ion-text [ngStyle]="{'color': m.status.color }">{{ m.status.description }}</ion-text>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<div class="ion-padding custom-skeleton" *ngIf="loading">
+  <ion-skeleton-text animated style="width: 100%; height: 100px; padding-bottom: 16px;"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 100%; height: 100px; padding-bottom: 16px;"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 100%; height: 100px; padding-bottom: 16px;"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 100%; height: 100px; padding-bottom: 16px;"></ion-skeleton-text>
+</div>

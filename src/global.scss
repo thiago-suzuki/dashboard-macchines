@@ -71,7 +71,7 @@
       text-align: center;
       h2:first-child {
         font-weight: 600;
-        color: #033278;
+        color: #6b07dd;
       }
       .alert-sub-title {
         margin-top: 20px;
@@ -109,6 +109,21 @@
   }
 }
 
+
+.alert-confirm-delete {
+  .alert-wrapper {
+    .alert-head {
+      text-align: center;
+      h2:first-child {
+        font-weight: 600;
+        color: #6b07dd;
+      }
+      .alert-sub-title {
+        margin-top: 20px;
+      }
+    }
+  }
+
 ion-button {
   background: var(--background);
   border-radius: var(--border-radius);
@@ -135,7 +150,7 @@ ion-button {
 
 .class-custom-action-sheet {
   ion-icon {
-    color: #033278 !important;
+    color: #6b07dd !important;
   }
 
   span {
@@ -153,7 +168,7 @@ ion-button {
   .cancel-button,
   .confirm-button {
     span {
-      color: #033278 !important;
+      color: #6b07dd !important;
     }
   }
 }
@@ -200,8 +215,8 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .alert-button.sc-ion-alert-md {
-  color: #033278;
-  --color: #033278;
+  color: #6b07dd;
+  --color: #6b07dd;
 }
 
 .alert-checkbox-icon.sc-ion-alert-md {
@@ -253,8 +268,8 @@ ion-slides {
     }
 
     .swiper-pagination-bullet-active {
-      background: #033278;
-      border: solid 1px #033278;
+      background: #6b07dd;
+      border: solid 1px #6b07dd;
     }
   }
 }
@@ -291,4 +306,4 @@ ion-slides {
     color: #707070 !important;
     border-top: solid 1px #A7A7A7 !important;
   }
-}
+}}
