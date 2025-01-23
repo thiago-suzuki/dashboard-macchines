@@ -41,5 +41,5 @@ $ npm install -g @angular/cli
 
 - Em seguida, rode o Projeto:
 ```bash
-$ npm run dev
+$ ionic serve
 ```
