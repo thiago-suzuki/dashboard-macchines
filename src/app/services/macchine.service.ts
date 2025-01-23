@@ -13,78 +13,76 @@ export class MacchineService {
     ) {}
 
     private async getAuthHeader() {
-        const { token } = await this.authService.getLocalUser();
+      const { token } = await this.authService.getLocalUser();
     
-        return token;
+      return token;
     }
 
     async authHeaders() {
-        const token = await this.getAuthHeader()
-        return new HttpHeaders({
-          'Authorization': 'Bearer ' + token
-        })
+      const token = await this.getAuthHeader()
+      return new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+      })
     }
     
 
     async getMacchineStatus() {
-        let headers = await this.authHeaders();
+      let headers = await this.authHeaders();
           
-        const status: any = await this.http.get(`${environment.apiUrl}/macchine/status`, {
-          headers: headers
-        })
-        .toPromise();
-        
-        return status;
+      const status: any = await this.http.get(`${environment.apiUrl}/macchine/status`, {
+        headers: headers
+      })
+      .toPromise();
+      
+      return status;
     }
 
     async getMacchinesByStatus(statusId: number) {
-        let headers = await this.authHeaders();
-          
-        const macchines: any = await this.http.get(`${environment.apiUrl}/macchine/filter-by-status/${statusId}`, {
-          headers: headers
-        })
-        .toPromise();
+      let headers = await this.authHeaders();
         
-        return macchines;
+      const macchines: any = await this.http.get(`${environment.apiUrl}/macchine/filter-by-status/${statusId}`, {
+        headers: headers
+      })
+      .toPromise();
+      
+      return macchines;
     }
 
     async getDataAddressByCEP(cep: string) {
-        const data: any = await this.http.get(`https://viacep.com.br/ws/${cep}/json/`).toPromise();
-          
-        return data;
+      const data: any = await this.http.get(`https://viacep.com.br/ws/${cep}/json/`).toPromise();
+        
+      return data;
     }
 
     async createMacchine(macchine: any) {
-        let headers = await this.authHeaders();
-          
-        const macchines: any = await this.http.post(`${environment.apiUrl}/macchine`, macchine, {
-          headers: headers
-        })
-        .toPromise();
+      let headers = await this.authHeaders();
         
-        return macchines;
+      const macchines: any = await this.http.post(`${environment.apiUrl}/macchine`, macchine, {
+        headers: headers
+      })
+      .toPromise();
+      
+      return macchines;
     }
 
     async deleteMacchine(macchineId: string) {
-        let headers = await this.authHeaders();
-          
-        const macchines: any = await this.http.put(`${environment.apiUrl}/macchine/delete/${macchineId}`, {
-          headers: headers
-        })
-        .toPromise();
-        
-        return macchines;
+      let headers = await this.authHeaders();
+
+      await this.http.put(`${environment.apiUrl}/macchine/delete/${macchineId}`, {},  {
+        headers: headers
+      })
+      .toPromise();
     }
 
     async updateMacchine(macchine: any) {
-        let headers = await this.authHeaders();
-          
-        const macchines: any = await this.http.put(`${environment.apiUrl}/macchine/${macchine.id}`, macchine, {
-          headers: headers
-        })
-        .toPromise();
+      let headers = await this.authHeaders();
         
-        return macchines;
+      const macchines: any = await this.http.put(`${environment.apiUrl}/macchine/${macchine.id}`, macchine, {
+        headers: headers
+      })
+      .toPromise();
+      
+      return macchines;
     }
 }
 

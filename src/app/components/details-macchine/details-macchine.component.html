@@ -9,7 +9,7 @@
     </div>
 
     <ion-icon style="color: green; cursor: pointer;" slot="end" name="checkmark-circle-outline" (click)="submit()"></ion-icon>
-    <ion-icon style="color: red; cursor: pointer;" slot="end" name="trash-outline" (click)="deleteMacchine()"></ion-icon>
+    <ion-icon style="color: red; cursor: pointer;" slot="end" name="trash-outline" (click)="deleteMacchine()" *ngIf="!create"></ion-icon>
 
   </ion-toolbar>
 </ion-header>
