@@ -29,6 +29,12 @@ export class ListMacchinesComponent  implements OnInit {
     this.status = await this.macchineService.getMacchineStatus();
     this.statusId = this.status[0].id;
     await this.getMacchines();
+    this.macchineService.onMacchineUpdate().subscribe(async (updatedMachine) => {
+      await this.getMacchines();
+    });
+    this.macchineService.onMacchineCreated().subscribe(async (updatedMachine) => {
+      await this.getMacchines();
+    });
   }
 
   async getMacchines() {

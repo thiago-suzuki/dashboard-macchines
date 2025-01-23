@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { AuthService } from "./authentication.service";
+import { Observable } from "rxjs";
+import { Socket } from "ngx-socket-io";
 
 @Injectable({
     providedIn: 'root',
@@ -9,8 +11,17 @@ import { AuthService } from "./authentication.service";
 export class MacchineService {
     constructor(
         private http: HttpClient,
-        private authService: AuthService
+        private authService: AuthService,
+        private socket: Socket
     ) {}
+
+    onMacchineUpdate(): Observable<any> {
+      return this.socket.fromEvent('macchineUpdated');
+    }
+
+    onMacchineCreated(): Observable<any> {
+      return this.socket.fromEvent('macchineCreated');
+    }
 
     private async getAuthHeader() {
       const { token } = await this.authService.getLocalUser();
