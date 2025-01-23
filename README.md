@@ -11,6 +11,7 @@ Aplicação de Cadastro e Consulta de Máquinas
   <img align="center" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg">
   <img align="center" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ionic/ionic-original.svg">
   <img align="center" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg">
+  <img align="center" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg">
 </div>
 
 <br>
@@ -33,7 +34,7 @@ $ npm install
 $ npm install -g @ionic/cli
 $ npm install -g @angular/cli
 ```
-- No arquivo src/environments/environment.ts configure as APIs, caso queira rodar o backend local bastar deixar dessa forma:
+- No arquivo src/environments/environment.ts configure as APIs, caso queira rodar o backend local basta deixar dessa forma:
 <h1>
   <img alt="Macchine" title="Macchines" width="700" src=".github/environment.png" />
 </h1>
