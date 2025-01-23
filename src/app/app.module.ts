@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Storage } from '@ionic/storage';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
 
 const config: SocketIoConfig = { 
-  url: 'http://localhost:10000', // URL do servidor WebSocket
+  url: environment.socketUrl,
   options: {} 
 };
 
